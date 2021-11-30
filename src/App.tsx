@@ -26,7 +26,7 @@ function App() {
   ] as ExpenseItemProps[];
 
   return (
-    <div>
+    <div className="expenses">
       {expenses.map((expense: ExpenseItemProps) => (
         <ExpenseItem
           date={expense.date}

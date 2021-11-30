@@ -1,3 +1,3 @@
 export interface ExpenseDateProps {
-  date: Date | string;
+  date: Date;
 }
