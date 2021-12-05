@@ -1,4 +1,4 @@
-import { ParentCompProps } from "../models/parent-comp-props";
+import { ParentCompProps } from "../../models/parent-comp-props";
 import "./Card.scss";
 
 export const Card = (props: ParentCompProps) => {

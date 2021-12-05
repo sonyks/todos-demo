@@ -1,4 +1,4 @@
-import { ExpenseDateProps } from "../models/expense-date-props";
+import { ExpenseDateProps } from "../../models/expense-date-props";
 import "./ExpenseDate.scss";
 
 export const ExpenseDate = ({ date }: ExpenseDateProps) => {
