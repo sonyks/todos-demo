@@ -1,5 +1,6 @@
 import "./App.css";
 import { ExpenseItem } from "./components/Expenses/ExpenseItem";
+import { NewExpense } from "./components/NewExpense/NewExpense";
 import { ExpenseItemProps } from "./models/expense-item-props";
 
 function App() {
@@ -27,12 +28,14 @@ function App() {
 
   return (
     <div className="expenses">
+      <NewExpense />
       {expenses.map((expense: ExpenseItemProps) => (
         <ExpenseItem
           date={expense.date}
           title={expense.title}
           amount={expense.amount}
           id={expense.id}
+          key={expense.id}
         />
       ))}
     </div>
