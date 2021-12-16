@@ -1,5 +1,5 @@
 export interface ExpenseDate {
   title: string;
-  amount: string;
+  amount: number;
   date: Date;
 }

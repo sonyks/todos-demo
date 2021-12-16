@@ -5,7 +5,7 @@ import "./ExpenseForm.scss";
 export const ExpenseForm = (props: ExpenseFormProps) => {
   const [userInput, setUserInput] = useState({
     enteredTitle: "",
-    enteredAmount: "",
+    enteredAmount: 0.01,
     enteredDate: "",
   });
 
@@ -17,7 +17,7 @@ export const ExpenseForm = (props: ExpenseFormProps) => {
 
   const amountChangeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
     setUserInput((prevState) => {
-      return { ...prevState, enteredAmount: event.target.value };
+      return { ...prevState, enteredAmount: +event.target.value };
     });
   };
 
@@ -38,7 +38,7 @@ export const ExpenseForm = (props: ExpenseFormProps) => {
     props.onSaveExpenseData(expenseDate);
 
     setUserInput({
-      enteredAmount: "",
+      enteredAmount: 0.01,
       enteredDate: "",
       enteredTitle: "",
     });

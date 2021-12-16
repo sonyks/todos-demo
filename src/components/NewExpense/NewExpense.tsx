@@ -1,15 +1,19 @@
+import { ExpenseDate } from "../../models/expense-date";
 import { ExpenseItemProps } from "../../models/expense-item-props";
+import { NewExpenseProps } from "../../models/new-expense-props";
 import { ExpenseForm } from "./ExpenseForm";
 import "./NewExpense.scss";
 
-export const NewExpense = () => {
-  const saveExpenseDateHandler = (enteredExpenseDate: any) => {
+export const NewExpense = (props: NewExpenseProps) => {
+  const saveExpenseDateHandler = (enteredExpenseDate: ExpenseDate) => {
     const expenseDate = {
-      ...enteredExpenseDate,
+      title: enteredExpenseDate.title,
+      amount: enteredExpenseDate.amount,
+      date: enteredExpenseDate.date,
       id: Math.random().toString(),
     } as ExpenseItemProps;
 
-    console.log(expenseDate);
+    props.onAddExpense(expenseDate);
   };
 
   return (

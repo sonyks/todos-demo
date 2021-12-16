@@ -1,4 +1,6 @@
+import { useState } from "react";
 import "./App.css";
+import { ExpensesFilter } from "./components/Expenses/ExpenseFilter";
 import { ExpenseItem } from "./components/Expenses/ExpenseItem";
 import { NewExpense } from "./components/NewExpense/NewExpense";
 import { ExpenseItemProps } from "./models/expense-item-props";
@@ -26,10 +28,24 @@ function App() {
     },
   ] as ExpenseItemProps[];
 
+  const [filteredExpenses, setFilteredExpenses] = useState(expenses);
+
+  const addExpenseDateHandler = (enteredExpenseDate: ExpenseItemProps) => {
+    console.log(enteredExpenseDate);
+  };
+
+  const onFilteredExpenses = (selectedYear: number) => {
+    const newExpenses = expenses.filter((expense) => {
+      return expense.date.getFullYear() === selectedYear;
+    });
+    setFilteredExpenses(newExpenses);
+  };
+
   return (
     <div className="expenses">
-      <NewExpense />
-      {expenses.map((expense: ExpenseItemProps) => (
+      <NewExpense onAddExpense={addExpenseDateHandler} />
+      <ExpensesFilter onFilterExpenses={onFilteredExpenses} />
+      {filteredExpenses.map((expense: ExpenseItemProps) => (
         <ExpenseItem
           date={expense.date}
           title={expense.title}
