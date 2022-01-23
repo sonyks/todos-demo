@@ -9,6 +9,8 @@ export const ExpenseForm = (props: ExpenseFormProps) => {
     enteredDate: "",
   });
 
+  const [isNewExpenseVisible, setNewExpenseVisibility] = useState(true);
+
   const titleChangeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
     setUserInput((prevState) => {
       return { ...prevState, enteredTitle: event.target.value };
@@ -37,12 +39,30 @@ export const ExpenseForm = (props: ExpenseFormProps) => {
 
     props.onSaveExpenseData(expenseDate);
 
+    clearUserData();
+  };
+
+  const clearUserData = () => {
     setUserInput({
       enteredAmount: 0.01,
       enteredDate: "",
       enteredTitle: "",
     });
+    setNewExpenseVisibility(true);
   };
+
+  if (isNewExpenseVisible) {
+    return (
+      <div className=".add-new-expense__actions">
+        <button
+          type="button"
+          onClick={() => setNewExpenseVisibility(!isNewExpenseVisible)}
+        >
+          Add New Expense
+        </button>
+      </div>
+    );
+  }
 
   return (
     <form onSubmit={addExpenses}>
@@ -77,6 +97,9 @@ export const ExpenseForm = (props: ExpenseFormProps) => {
         </div>
       </div>
       <div className="new-expense__actions">
+        <button type="button" onClick={clearUserData}>
+          Cancel
+        </button>
         <button type="submit">Add Expense</button>
       </div>
     </form>

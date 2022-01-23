@@ -1,6 +1,7 @@
 import { useState } from "react";
 import "./App.css";
 import { ExpensesFilter } from "./components/Expenses/ExpenseFilter";
+import { ExpensesChart } from "./components/Expenses/ExpensesChart";
 import { ExpenseList } from "./components/Expenses/ExpensesList";
 import { NewExpense } from "./components/NewExpense/NewExpense";
 import { ExpenseItemProps } from "./models/expense-item-props";
@@ -47,6 +48,7 @@ function App() {
     <div className="expenses">
       <NewExpense onAddExpense={addExpenseDateHandler} />
       <ExpensesFilter onFilterExpenses={onFilteredExpenses} />
+      <ExpensesChart expenses={filteredExpenses} />
       <ExpenseList items={filteredExpenses} />
     </div>
   );
